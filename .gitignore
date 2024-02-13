@@ -1,0 +1,12 @@
+.DS_Store
+.vscode
+*.swp
+
+# Godot 4+ specific ignores
+.godot/
+export_presets.cfg
+
+# Export Web
+node_modules
+Export/Web/index.*
+.wrangler
