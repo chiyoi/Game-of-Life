@@ -8,5 +8,5 @@ export_presets.cfg
 
 # Export Web
 node_modules
-Export/Web/index.*
+Export/Web/game.*
 .wrangler
