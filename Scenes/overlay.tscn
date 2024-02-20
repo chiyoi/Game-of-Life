@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqiloby74wiy5"]
+
+[sub_resource type="Gradient" id="Gradient_wyfmp"]
+offsets = PackedFloat32Array(0, 0.1, 0.9, 1)
+colors = PackedColorArray(0.427451, 0.592157, 0.647059, 0, 0.427451, 0.592157, 0.647059, 0.784314, 0.427451, 0.592157, 0.647059, 0.784314, 0.427451, 0.592157, 0.647059, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_murvs"]
+gradient = SubResource("Gradient_wyfmp")
+
+[node name="Overlay" type="Sprite2D"]
+position = Vector2(67, 0)
+scale = Vector2(0.726562, 180)
+texture = SubResource("GradientTexture1D_murvs")
+centered = false

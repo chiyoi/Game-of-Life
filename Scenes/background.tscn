@@ -69,6 +69,4 @@ animations = [{
 [node name="Background" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_ur1wg")
 animation = &"Transition"
-frame = 7
-frame_progress = 1.0
 centered = false

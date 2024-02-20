@@ -30,7 +30,7 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 
 enum Status {
 	INACTIVE,
-	ACTIVE,
+	ACTIVE = 2,
 }
 
 func _on_area_2d_mouse_exited():

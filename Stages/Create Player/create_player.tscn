@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://gtmjwn7vald"]
+
+[ext_resource type="Script" path="res://Stages/Create Player/create_player.gd" id="1_nwhnv"]
+[ext_resource type="PackedScene" uid="uid://b5ev0cs5pu7lw" path="res://Stages/Game of Life/game_of_life.tscn" id="2_30tum"]
+[ext_resource type="PackedScene" uid="uid://c4weqo1i213f1" path="res://Scenes/background.tscn" id="2_dsirq"]
+[ext_resource type="Script" path="res://Stages/Create Player/node_2d.gd" id="3_16rnh"]
+[ext_resource type="PackedScene" uid="uid://b7tjcxgb5t5fn" path="res://Scenes/Cell/big_cell.tscn" id="4_cbi4v"]
+[ext_resource type="PackedScene" uid="uid://blhtvoy0a2uuv" path="res://Scenes/Grids/big_grids.tscn" id="5_khhje"]
+[ext_resource type="Theme" uid="uid://ficrx2grg80m" path="res://Components/control_theme.tres" id="6_ub7v4"]
+[ext_resource type="Script" path="res://Stages/Create Player/control.gd" id="7_ns5rn"]
+[ext_resource type="LabelSettings" uid="uid://bcmvneg4mcuj6" path="res://Components/title_label_settings.tres" id="8_vacfe"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_rtbgw"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_dgk53"]
+events = [SubResource("InputEventKey_rtbgw")]
+
+[node name="CreatePlayer" type="Node"]
+script = ExtResource("1_nwhnv")
+game_of_life_stage = ExtResource("2_30tum")
+
+[node name="Background" parent="." instance=ExtResource("2_dsirq")]
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("3_16rnh")
+big_cell_scene = ExtResource("4_cbi4v")
+
+[node name="BigGrids" parent="Node2D" instance=ExtResource("5_khhje")]
+
+[node name="Cells" type="Node2D" parent="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 180.0
+mouse_filter = 1
+theme = ExtResource("6_ub7v4")
+script = ExtResource("7_ns5rn")
+
+[node name="Title" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 9.0
+offset_right = 66.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Create Player"
+label_settings = ExtResource("8_vacfe")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="StartButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -33.0
+offset_right = 21.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+shortcut = SubResource("Shortcut_dgk53")
+text = "Start"
+
+[connection signal="animation_finished" from="Background" to="." method="next_stage"]
+[connection signal="player_cell_statuses_submitted" from="Node2D" to="." method="pass_cell_statuses"]
+[connection signal="pressed" from="Control/StartButton" to="." method="start_transition_to_next_stage"]
+[connection signal="pressed" from="Control/StartButton" to="Node2D" method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/StartButton" to="Control" method="_on_start_button_pressed"]
