@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://blhtvoy0a2uuv"]
+
+[ext_resource type="Texture2D" uid="uid://shaoybkbldtq" path="res://Assets/Art/Grids Big.png" id="1_48hpn"]
+
+[node name="BigGrids" type="Sprite2D"]
+position = Vector2(107, 37)
+texture = ExtResource("1_48hpn")
+centered = false

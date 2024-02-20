@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bufphd0hajdyn"]
+
+[ext_resource type="Texture2D" uid="uid://jo5mut0i5qmo" path="res://Assets/Art/Grids.png" id="1_gt0da"]
+
+[node name="Grids" type="Sprite2D"]
+position = Vector2(87, 17)
+texture = ExtResource("1_gt0da")
+centered = false

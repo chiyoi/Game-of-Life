@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://c4weqo1i213f1"]
+
+[ext_resource type="Texture2D" uid="uid://g8007lxc7nhe" path="res://Assets/Art/Background.png" id="1_ilrkr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3lo7"]
+atlas = ExtResource("1_ilrkr")
+region = Rect2(0, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfyf6"]
+atlas = ExtResource("1_ilrkr")
+region = Rect2(320, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eksyx"]
+atlas = ExtResource("1_ilrkr")
+region = Rect2(640, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dnbe"]
+atlas = ExtResource("1_ilrkr")
+region = Rect2(960, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd15j"]
+atlas = ExtResource("1_ilrkr")
+region = Rect2(1280, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_revu1"]
+atlas = ExtResource("1_ilrkr")
+region = Rect2(1600, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or3tc"]
+atlas = ExtResource("1_ilrkr")
+region = Rect2(1920, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sitas"]
+atlas = ExtResource("1_ilrkr")
+region = Rect2(0, 0, 320, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ur1wg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3lo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfyf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eksyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dnbe")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_fd15j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_revu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or3tc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sitas")
+}],
+"loop": false,
+"name": &"Transition",
+"speed": 20.0
+}]
+
+[node name="Background" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ur1wg")
+animation = &"Transition"
+frame = 7
+frame_progress = 1.0
+centered = false

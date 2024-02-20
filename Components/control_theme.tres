@@ -1,0 +1,62 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://ficrx2grg80m"]
+
+[ext_resource type="Texture2D" uid="uid://dmhobtf4111ch" path="res://Assets/Art/Button.png" id="1_nav2a"]
+[ext_resource type="FontFile" uid="uid://co2dacuao2ygr" path="res://Assets/Fonts/PixelMplus10-Regular.ttf" id="2_xck1q"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ho5d8"]
+texture = ExtResource("1_nav2a")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(64, 2.08165e-12, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_twxhi"]
+texture = ExtResource("1_nav2a")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(16, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_frobf"]
+texture = ExtResource("1_nav2a")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(32, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_80hxm"]
+texture = ExtResource("1_nav2a")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_frki4"]
+texture = ExtResource("1_nav2a")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(48, 0, 16, 16)
+
+[resource]
+default_font = ExtResource("2_xck1q")
+default_font_size = 10
+Button/colors/font_color = Color(0.137255, 0.188235, 0.290196, 1)
+Button/colors/font_disabled_color = Color(0.1363, 0.187533, 0.29, 0.67451)
+Button/colors/font_focus_color = Color(0.137255, 0.188235, 0.290196, 1)
+Button/colors/font_hover_color = Color(0.137255, 0.188235, 0.290196, 1)
+Button/colors/font_hover_pressed_color = Color(0.137255, 0.188235, 0.290196, 1)
+Button/colors/font_pressed_color = Color(0.137255, 0.188235, 0.290196, 1)
+Button/styles/disabled = SubResource("StyleBoxTexture_ho5d8")
+Button/styles/focus = SubResource("StyleBoxTexture_twxhi")
+Button/styles/hover = SubResource("StyleBoxTexture_frobf")
+Button/styles/normal = SubResource("StyleBoxTexture_80hxm")
+Button/styles/pressed = SubResource("StyleBoxTexture_frki4")
+Label/colors/font_color = Color(0.427451, 0.592157, 0.647059, 1)
+Label/colors/font_outline_color = Color(0.137255, 0.188235, 0.290196, 1)
+Label/constants/outline_size = 5

@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://b7tjcxgb5t5fn"]
+
+[ext_resource type="Texture2D" uid="uid://cluixk7qoj80a" path="res://Assets/Art/Cells Big.png" id="1_tjg8g"]
+[ext_resource type="Script" path="res://Scripts/big_cell.gd" id="2_f8lqp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ueip"]
+atlas = ExtResource("1_tjg8g")
+region = Rect2(36, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aamne"]
+atlas = ExtResource("1_tjg8g")
+region = Rect2(24, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3880m"]
+atlas = ExtResource("1_tjg8g")
+region = Rect2(12, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atbbf"]
+atlas = ExtResource("1_tjg8g")
+region = Rect2(0, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfo44"]
+atlas = ExtResource("1_tjg8g")
+region = Rect2(36, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gacm"]
+atlas = ExtResource("1_tjg8g")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2axj"]
+atlas = ExtResource("1_tjg8g")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2il8"]
+atlas = ExtResource("1_tjg8g")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ikv02"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ueip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aamne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3880m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atbbf")
+}],
+"loop": false,
+"name": &"Non-Player",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfo44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gacm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2axj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2il8")
+}],
+"loop": false,
+"name": &"Player",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_777jp"]
+radius = 5.0
+
+[node name="BigCell" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ikv02")
+animation = &"Player"
+centered = false
+script = ExtResource("2_f8lqp")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(6, 6)
+shape = SubResource("CircleShape2D_777jp")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
