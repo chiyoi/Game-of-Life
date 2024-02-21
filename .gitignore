@@ -6,8 +6,4 @@
 .godot/
 export_presets.cfg
 *.import
-
-# Web
-node_modules
-Export/Web/game.*
-.wrangler
+Export
