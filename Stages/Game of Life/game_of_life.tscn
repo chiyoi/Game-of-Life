@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5ev0cs5pu7lw"]
+[gd_scene load_steps=10 format=3 uid="uid://b5ev0cs5pu7lw"]
 
 [ext_resource type="PackedScene" uid="uid://c4weqo1i213f1" path="res://Scenes/background.tscn" id="1_8rg0f"]
 [ext_resource type="Script" path="res://Stages/Game of Life/game_of_life.gd" id="1_sh68v"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://ficrx2grg80m" path="res://Components/control_theme.tres" id="3_gfb5v"]
 [ext_resource type="PackedScene" uid="uid://dt1826t1mbs65" path="res://Scenes/Cell/cell.tscn" id="4_fn0m0"]
 [ext_resource type="Script" path="res://Stages/Game of Life/control_label.gd" id="8_1drax"]
+[ext_resource type="PackedScene" uid="uid://cv5us1sehiigu" path="res://Scenes/nr1.tscn" id="9_mjde2"]
 
 [node name="GameOfLife" type="Node"]
 script = ExtResource("1_sh68v")
@@ -18,7 +19,7 @@ conclusion_stage = ExtResource("2_gto3m")
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("2_wvop5")
 cell_scene = ExtResource("4_fn0m0")
-update_interval = 0.2
+update_interval = 0.4
 become_player_threshold = 2
 initial_spawn_rate = 0.4
 
@@ -47,6 +48,8 @@ grow_horizontal = 2
 text = "Epochs: 0"
 vertical_alignment = 1
 script = ExtResource("8_1drax")
+
+[node name="Nr1" parent="." instance=ExtResource("9_mjde2")]
 
 [connection signal="concluded" from="Node2D" to="." method="conclude"]
 [connection signal="epoch_updated" from="Node2D" to="Control/Label" method="_on_node_2d_epoch_updated"]

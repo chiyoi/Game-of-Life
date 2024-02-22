@@ -15,6 +15,10 @@ run/main_scene="res://Stages/Introduction/introduction.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://Assets/Art/Icon.png"
 
+[audio]
+
+driver/mix_rate.web=44100
+
 [display]
 
 window/size/viewport_width=320
@@ -27,11 +31,27 @@ window/stretch/mode="canvas_items"
 
 fonts/dynamic_fonts/use_oversampling=false
 
+[importer_defaults]
+
+wav={
+"compress/mode": 1,
+"edit/loop_begin": 0,
+"edit/loop_end": -1,
+"edit/loop_mode": 2,
+"edit/normalize": false,
+"edit/trim": false,
+"force/8_bit": true,
+"force/max_rate": false,
+"force/max_rate_hz": 44100,
+"force/mono": false
+}
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
+limits/global_shader_variables/buffer_size=16384
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
