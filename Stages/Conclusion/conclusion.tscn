@@ -1,13 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0sr3neqg2px7"]
+[gd_scene load_steps=5 format=3 uid="uid://b0sr3neqg2px7"]
 
-[ext_resource type="Script" path="res://Stages/Conclusion/conclusion.gd" id="1_igwa4"]
 [ext_resource type="Theme" uid="uid://ficrx2grg80m" path="res://Components/control_theme.tres" id="1_whwe1"]
 [ext_resource type="PackedScene" uid="uid://cqiloby74wiy5" path="res://Scenes/overlay.tscn" id="2_wn2tq"]
 [ext_resource type="LabelSettings" uid="uid://bcmvneg4mcuj6" path="res://Components/title_label_settings.tres" id="4_wx22x"]
 [ext_resource type="LabelSettings" uid="uid://jxcbghl2f2oj" path="res://Components/single_line_label_settings.tres" id="5_cgj7p"]
 
 [node name="Conclusion" type="Node"]
-script = ExtResource("1_igwa4")
 
 [node name="Node2D" type="Node2D" parent="."]
 
