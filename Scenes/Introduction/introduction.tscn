@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://mo1h5hvmevv6"]
+
+[ext_resource type="Script" path="res://Scenes/Introduction/introduction.gd" id="1_38u38"]
+[ext_resource type="PackedScene" uid="uid://c4weqo1i213f1" path="res://Scenes/Common/background.tscn" id="1_uf82v"]
+[ext_resource type="PackedScene" uid="uid://gtmjwn7vald" path="res://Scenes/Create Player/create_player.tscn" id="2_ltnty"]
+[ext_resource type="Theme" uid="uid://ficrx2grg80m" path="res://Resources/control_theme.tres" id="3_l6nms"]
+[ext_resource type="PackedScene" uid="uid://bufphd0hajdyn" path="res://Scenes/Common/Grids/grids.tscn" id="4_tewjp"]
+[ext_resource type="PackedScene" uid="uid://dt1826t1mbs65" path="res://Scenes/Common/Cell/cell.tscn" id="5_fumdl"]
+[ext_resource type="LabelSettings" uid="uid://bcmvneg4mcuj6" path="res://Resources/title_label_settings.tres" id="5_o77nm"]
+[ext_resource type="Script" path="res://Scenes/Common/blink.gd" id="6_itcot"]
+[ext_resource type="PackedScene" uid="uid://cqiloby74wiy5" path="res://Scenes/overlay.tscn" id="6_m4hbq"]
+[ext_resource type="LabelSettings" uid="uid://jxcbghl2f2oj" path="res://Resources/single_line_label_settings.tres" id="11_3ou8d"]
+
+[node name="Introduction" type="Node"]
+script = ExtResource("1_38u38")
+create_player_scene = ExtResource("2_ltnty")
+cell_scene = ExtResource("5_fumdl")
+
+[node name="Background" parent="." instance=ExtResource("1_uf82v")]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Grids" parent="Node2D" instance=ExtResource("4_tewjp")]
+
+[node name="Cells" type="Node2D" parent="Node2D"]
+
+[node name="Overlay" parent="Node2D" instance=ExtResource("6_m4hbq")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_l6nms")
+
+[node name="Title" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -64.0
+offset_right = 60.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Of Life"
+label_settings = ExtResource("5_o77nm")
+
+[node name="Description" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -19.0
+offset_right = 91.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Create your set of cells, and compete with other cells under the rule of Conway's Game of Life."
+autowrap_mode = 3
+
+[node name="ClickToStart" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -47.0
+offset_right = 43.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Click to start..."
+label_settings = ExtResource("11_3ou8d")
+script = ExtResource("6_itcot")
+frequency = 0.8
+
+[connection signal="animation_finished" from="Background" to="." method="next_stage"]
+[connection signal="gui_input" from="Control" to="." method="_on_control_gui_input"]

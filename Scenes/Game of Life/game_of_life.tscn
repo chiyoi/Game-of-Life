@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5ev0cs5pu7lw"]
+
+[ext_resource type="PackedScene" uid="uid://c4weqo1i213f1" path="res://Scenes/Common/background.tscn" id="1_8rg0f"]
+[ext_resource type="Script" path="res://Scenes/Game of Life/game_of_life.gd" id="1_sh68v"]
+[ext_resource type="PackedScene" uid="uid://bufphd0hajdyn" path="res://Scenes/Common/Grids/grids.tscn" id="2_hv76l"]
+[ext_resource type="PackedScene" uid="uid://b0sr3neqg2px7" path="res://Scenes/Game of Life/Conclusion/conclusion.tscn" id="2_mrfog"]
+[ext_resource type="Theme" uid="uid://ficrx2grg80m" path="res://Resources/control_theme.tres" id="3_gfb5v"]
+[ext_resource type="PackedScene" uid="uid://dt1826t1mbs65" path="res://Scenes/Common/Cell/cell.tscn" id="4_fn0m0"]
+
+[node name="GameOfLife" type="Node"]
+script = ExtResource("1_sh68v")
+conclusion_scene = ExtResource("2_mrfog")
+cell_scene = ExtResource("4_fn0m0")
+
+[node name="Background" parent="." instance=ExtResource("1_8rg0f")]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Grids" parent="Node2D" instance=ExtResource("2_hv76l")]
+
+[node name="Cells" type="Node2D" parent="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_gfb5v")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.0
+offset_right = 76.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Epochs: 0"
+vertical_alignment = 1

@@ -1,20 +1,19 @@
-extends Node2D
+extends Node
+
+@export var conclusion_scene: PackedScene
+@export var cell_scene: PackedScene
+
+@export var update_interval = 0.2
+@export var become_player_threshold = 2
+@export var initial_spawn_rate = 0.4
+
+@onready var cells = $Node2D/Cells
+@onready var label = $Control/Label
 
 const GRID_ORIGIN = Vector2i(88, 18)
 const GRID_STRIDE = 9
 const GRID_SIZE = 16
 const PLAYER_AREA_MARGIN = 4
-
-signal epoch_updated(epochs: int)
-signal concluded(epochs: int, is_converged: bool, is_won: bool)
-
-@export var cell_scene: PackedScene
-
-@export var update_interval: float
-@export var become_player_threshold: int
-@export var initial_spawn_rate: float
-
-@onready var cells = $Cells
 
 var player_cell_statuses: Array
 
@@ -23,14 +22,16 @@ var timer = 0
 var last_two_marks = [[], []]
 var stopped = false
 
+func initiate(_player_cell_statuses: Array):
+	player_cell_statuses = _player_cell_statuses
+
 func _ready():
 	var move_index = 0
 	for i in GRID_SIZE * GRID_SIZE:
 		var pos = index_to_position(i)
 		var cell = cell_scene.instantiate()
 		cell.position = GRID_ORIGIN + pos * GRID_STRIDE
-		if (pos.x >= PLAYER_AREA_MARGIN and
-				pos.y >= PLAYER_AREA_MARGIN and
+		if (pos.x >= PLAYER_AREA_MARGIN and pos.y >= PLAYER_AREA_MARGIN and
 				pos.x < GRID_SIZE - PLAYER_AREA_MARGIN and
 				pos.y < GRID_SIZE - PLAYER_AREA_MARGIN):
 			cell.status = player_cell_statuses[move_index]
@@ -72,17 +73,17 @@ func _process(delta):
 	if not stopped:
 		if player_count == 0:
 			stopped = true
-			emit_signal('concluded', epochs, false, false)
+			show_conclusion(false, false)
 		elif (mark.hash() == last_two_marks[0].hash() or
-				mark.hash() == last_two_marks[1].hash()):
+			mark.hash() == last_two_marks[1].hash()):
 			stopped = true
-			emit_signal('concluded', epochs, true, false)
+			show_conclusion(true, false)
 		elif non_player_count == 0:
 			stopped = true
-			emit_signal('concluded', epochs, false, true)
+			show_conclusion(false, true)
 		last_two_marks[epochs % 2] = mark
 		epochs += 1
-	emit_signal('epoch_updated', epochs)
+	update_label()
 
 func count_neighbours(pos: Vector2):
 	var active_neighbours = 0
@@ -116,9 +117,24 @@ func roll_offset(x: int):
 func _on_control_gui_input(event: InputEvent):
 	if (not event is InputEventMouseButton or
 			not event.is_pressed() or
-			event.button_index != MOUSE_BUTTON_LEFT):
+		event.button_index != MOUSE_BUTTON_LEFT):
 		return
 	queue_free()
+
+func show_conclusion(is_converged: bool, is_won: bool):
+	var conclusion = conclusion_scene.instantiate()
+	if is_converged:
+		conclusion.get_node('Control/Details').text = 'You created a stable life. Congratulations.'
+	elif is_won:
+		conclusion.get_node('Control/Details').text = 'You killed all the enemies. Awesome.'
+	else:
+		conclusion.get_node('Control/Details').text = 'Your created life stayed over ' + str(epochs) + ' epochs.'
+		if epochs > 30:
+			conclusion.get_node('Control/Details').text += ' Good job.'
+	add_sibling(conclusion)
+
+func update_label():
+	label.text = "Epochs: " + str(epochs)
 
 enum CellStatus {
 	INACTIVE,

@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0sr3neqg2px7"]
+
+[ext_resource type="PackedScene" uid="uid://cqiloby74wiy5" path="res://Scenes/overlay.tscn" id="1_y7dbu"]
+[ext_resource type="Theme" uid="uid://ficrx2grg80m" path="res://Resources/control_theme.tres" id="2_1s8vt"]
+[ext_resource type="LabelSettings" uid="uid://bcmvneg4mcuj6" path="res://Resources/title_label_settings.tres" id="3_iphv3"]
+
+[node name="Conclusion" type="Node"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Overlay" parent="Node2D" instance=ExtResource("1_y7dbu")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_1s8vt")
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.0
+offset_top = 33.0
+offset_right = 55.0
+offset_bottom = 55.0
+grow_horizontal = 2
+text = "Concolusion"
+label_settings = ExtResource("3_iphv3")
+
+[node name="Details" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -6.0
+offset_right = 79.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Here should be some concolusion text set by script."
+autowrap_mode = 3
+
+[connection signal="gui_input" from="Control" to="." method="_on_control_gui_input"]

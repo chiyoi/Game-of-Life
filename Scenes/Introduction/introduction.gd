@@ -1,15 +1,19 @@
-extends Node2D
+extends Node
 
 const GRID_ORIGIN = Vector2i(88, 18)
 const GRID_STRIDE = 9
 const GRID_SIZE = 16
 
+@export var create_player_scene: PackedScene
 @export var cell_scene: PackedScene
 
-@export var update_interval: float
-@export var initial_spawn_rate: float
+@export var update_interval = 0.2
+@export var initial_spawn_rate = 0.4
 
-@onready var cells = $Cells
+@onready var background = $Background
+@onready var node_2D = $Node2D
+@onready var cells = $Node2D/Cells
+@onready var control = $Control
 
 var timer = 0
 
@@ -72,6 +76,14 @@ func _on_control_gui_input(event: InputEvent):
 			not event.is_pressed() or
 			event.button_index != MOUSE_BUTTON_LEFT):
 		return
+	background.frame = 0
+	background.play('Transition')
+	node_2D.hide()
+	control.hide()
+
+func next_stage():
+	var create_player = create_player_scene.instantiate()
+	add_sibling(create_player)
 	queue_free()
 
 enum CellStatus {
