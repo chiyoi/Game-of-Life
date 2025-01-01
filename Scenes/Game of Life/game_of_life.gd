@@ -124,11 +124,14 @@ func _on_control_gui_input(event: InputEvent):
 func show_conclusion(is_converged: bool, is_won: bool):
 	var conclusion = conclusion_scene.instantiate()
 	if is_converged:
+		conclusion.get_node('Control/Title').text = 'Converged'
 		conclusion.get_node('Control/Details').text = 'You created a stable life. Congratulations.'
 	elif is_won:
+		conclusion.get_node('Control/Title').text = 'Win'
 		conclusion.get_node('Control/Details').text = 'You killed all the enemies. Awesome.'
 	else:
-		conclusion.get_node('Control/Details').text = 'Your created life stayed over ' + str(epochs) + ' epochs.'
+		conclusion.get_node('Control/Title').text = 'Game Over'
+		conclusion.get_node('Control/Details').text = 'Your created life struggled over ' + str(epochs) + ' epochs.'
 		if epochs > 30:
 			conclusion.get_node('Control/Details').text += ' Good job.'
 	add_sibling(conclusion)
